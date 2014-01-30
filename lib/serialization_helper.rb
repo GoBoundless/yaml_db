@@ -104,11 +104,12 @@ module SerializationHelper
     end
 
     def self.unhash_records(records, keys)
-      records.each_with_index do |record, index|
-        records[index] = unhash(record, keys)
+      rows = []
+      records.each do |record|
+        rows << unhash(record, keys)
       end
 
-      records
+      rows
     end
 
     def self.convert_booleans(records, columns)
